@@ -1,6 +1,8 @@
 # Use an official Node.js runtime as the base image
 FROM railwayapp/node:14
-
+ARG EnvironmentVariable
+ARG RAILWAY_ENVIRONMENT
+ENV RAILWAY_ENVIRONMENT=$RAILWAY_ENVIRONMENT
 # Set the working directory in the container
 WORKDIR /dist
 
@@ -19,9 +21,7 @@ RUN npm run build
 # Expose the port that your Express app will listen on
 EXPOSE 5000
 
-ARG EnvironmentVariable
-ARG RAILWAY_ENVIRONMENT
-ENV RAILWAY_ENVIRONMENT=$RAILWAY_ENVIRONMENT
+
 # Check if NODE_ENV is production and set APP_URL accordingly
 
 # Command to run the app when the container starts
