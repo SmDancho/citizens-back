@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server.js",
+    "build": "npx tsc",
+    "start": "npm run build && node dist/server.js",
     "dev": "nodemon src/server.ts"
   },
   "author": "",
