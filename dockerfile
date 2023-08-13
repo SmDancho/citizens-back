@@ -1,11 +1,11 @@
 # Use an official Node.js runtime as the base image
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Set the working directory in the container
-WORKDIR /usr/src/
+WORKDIR /dist
 
 # Copy package.json and package-lock.json to the container
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
 # Install app dependencies
 RUN npm install
@@ -19,5 +19,7 @@ RUN npm run build
 # Expose the port that your Express app will listen on
 EXPOSE 5000
 
+# Check if NODE_ENV is production and set APP_URL accordingly
+
 # Command to run the app when the container starts
-CMD ["npm", "run" , "start"]
+CMD npm start
