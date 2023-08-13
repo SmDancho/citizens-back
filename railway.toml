@@ -1,3 +1,0 @@
-[[services]]
-  internal_port = 3000
-  protocol = "http"
