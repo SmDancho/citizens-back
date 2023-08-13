@@ -18,6 +18,8 @@ RUN npm run build
 
 # Expose the port that your Express app will listen on
 EXPOSE 5000
+
+ARG EnvironmentVariable
 ARG RAILWAY_ENVIRONMENT
 ENV RAILWAY_ENVIRONMENT=$RAILWAY_ENVIRONMENT
 # Check if NODE_ENV is production and set APP_URL accordingly
