@@ -37,33 +37,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCitizens = void 0;
+var buildHierarchy_1 = require("./utils/buildHierarchy");
 var citizens_1 = require("../models/citizens");
 var city_1 = require("../models/city");
-//@ts-ignore
-function removeDuplicates(array) {
-    // Declare a new array
-    var newArray = [];
-    // Declare an empty object
-    var uniqueObject = {};
-    // Loop for the array elements
-    for (var i in array) {
-        // Extract the title
-        var objTitle = array[i]['name'];
-        // Use the title as the index
-        //@ts-ignore
-        uniqueObject[objTitle] = array[i];
-    }
-    // Loop to push unique object into array
-    for (var i in uniqueObject) {
-        //@ts-ignore
-        newArray.push(uniqueObject[i]);
-    }
-    // Display the unique objects
-    return newArray;
-}
-// const groups: group[][] = citizens.map((citizen) => citizen.groups);
 var getCitizens = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var citizens, cities, result;
+    var citizens, cities, config, convertTypeCfg, validJSONString, parsedArray, hierarchy;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, citizens_1.Citizens.find()];
@@ -72,14 +50,13 @@ var getCitizens = function (req, res) { return __awaiter(void 0, void 0, void 0,
                 return [4 /*yield*/, city_1.Cities.find()];
             case 2:
                 cities = _a.sent();
-                result = citizens.map(function (citizen) {
-                    var city = cities.filter(function (city) { return city.id === citizen.city_id; });
-                    console.log(city);
-                    return {
-                        citizen: citizen,
-                        city: city,
-                    };
-                });
+                config = req.query.config;
+                convertTypeCfg = config;
+                validJSONString = convertTypeCfg === null || convertTypeCfg === void 0 ? void 0 : convertTypeCfg.replace(/'/g, '"');
+                parsedArray = JSON.parse(validJSONString);
+                console.log(parsedArray);
+                hierarchy = (0, buildHierarchy_1.buildHierarchy)(parsedArray, citizens);
+                res.json(hierarchy);
                 return [2 /*return*/];
         }
     });

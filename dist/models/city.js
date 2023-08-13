@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cities = void 0;
 var mongoose_1 = require("mongoose");
 var cities = new mongoose_1.Schema({
+    id: Number,
     name: String,
     data: String,
 }, { collection: 'cities' });
