@@ -27,8 +27,7 @@ export function buildHierarchy(config: string[], citizens: citizens[]) {
       }
 
       if (index === levels.length - 1) {
-        //@ts-ignore
-        levelObject.data.push(resident.name);
+        levelObject?.data?.push({ name: resident.name });
       }
       levelArray = levelObject?.data as hierarchy[];
     });

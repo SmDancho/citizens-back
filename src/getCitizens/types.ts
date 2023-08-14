@@ -1,6 +1,6 @@
 export interface hierarchy {
   name: string;
-  data: hierarchy[] | string[];
+  data?: hierarchy[] 
 }
 export interface group {
   type: string;
