@@ -1,7 +1,7 @@
 import { buildHierarchy } from './utils/buildHierarchy';
 import { Citizens } from '../models/citizens';
 import { Cities } from '../models/city';
-import type { citizens } from './types';
+import type { citizens, city } from './types';
 import { Request, Response } from 'express';
 
 export const getCitizens = async (req: Request, res: Response) => {
@@ -15,6 +15,6 @@ export const getCitizens = async (req: Request, res: Response) => {
 
   console.log(parsedArray);
 
-  const hierarchy = buildHierarchy(parsedArray, citizens , cities);
+  const hierarchy = buildHierarchy(parsedArray, citizens, cities as city[]);
   res.json(hierarchy);
 };

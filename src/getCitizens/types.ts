@@ -1,8 +1,7 @@
 export interface hierarchy {
   name?: string;
   data?: hierarchy[];
-  cityData?: any;
-  id?: number;
+  cityData?: city;
 }
 export interface group {
   type: string;
@@ -13,4 +12,9 @@ export interface citizens {
   name: string;
   groups: group[];
   city_id: number;
+}
+export interface city {
+  id: number;
+  name: string;
+  data: string;
 }
