@@ -15,6 +15,6 @@ export const getCitizens = async (req: Request, res: Response) => {
 
   console.log(parsedArray);
 
-  const hierarchy = buildHierarchy(parsedArray, citizens);
+  const hierarchy = buildHierarchy(parsedArray, citizens , cities);
   res.json(hierarchy);
 };

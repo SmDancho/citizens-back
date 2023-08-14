@@ -1,6 +1,10 @@
 import type { hierarchy, group, citizens } from '../types';
 
-export function buildHierarchy(config: string[], citizens: citizens[]) {
+export function buildHierarchy(
+  config: string[],
+  citizens: citizens[],
+  citiesData: any
+) {
   const hierarchyData: hierarchy[] = [];
 
   citizens.forEach((resident) => {
@@ -15,7 +19,7 @@ export function buildHierarchy(config: string[], citizens: citizens[]) {
       if (!levelName) {
         return;
       }
-
+      const cityData = citiesData.find((item: any) => item.id === resident.id);
       let levelObject = levelArray.find((item) => item.name === levelName);
 
       if (!levelObject) {
@@ -25,9 +29,13 @@ export function buildHierarchy(config: string[], citizens: citizens[]) {
         };
         levelArray.push(levelObject as hierarchy);
       }
-
+      if (index === 0) {
+        levelObject.cityData = cityData;
+      }
       if (index === levels.length - 1) {
-        levelObject?.data?.push({ name: resident.name });
+        levelObject?.data?.push({
+          name: resident.name,
+        });
       }
       levelArray = levelObject?.data as hierarchy[];
     });
