@@ -30,13 +30,12 @@ export function buildHierarchy(
         levelArray.push(levelObject as hierarchy);
       }
       
-      if (index === 0) {
-        levelObject.cityData = cityData;
-      }
+    
       if (index === levels.length - 1) {
         levelObject?.data?.push({
           name: resident.name,
         });
+        levelObject.cityData = cityData;
       }
       levelArray = levelObject?.data as hierarchy[];
     });
