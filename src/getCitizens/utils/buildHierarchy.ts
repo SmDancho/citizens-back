@@ -1,4 +1,4 @@
-import type { hierarchy, group, citizens  , city} from '../types';
+import type { hierarchy, group, citizens, city } from '../types';
 
 export function buildHierarchy(
   config: string[],
@@ -29,13 +29,12 @@ export function buildHierarchy(
         };
         levelArray.push(levelObject as hierarchy);
       }
-      
-    
+
       if (index === levels.length - 1) {
         levelObject?.data?.push({
           name: resident.name,
+          cityData,
         });
-        levelObject.cityData = cityData;
       }
       levelArray = levelObject?.data as hierarchy[];
     });
