@@ -35,6 +35,7 @@ export function buildHierarchy(
       if (index === levels.length - 1) {
         levelObject?.data?.push({
           name: resident.name,
+          id: resident.id,
         });
       }
       levelArray = levelObject?.data as hierarchy[];

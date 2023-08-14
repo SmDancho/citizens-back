@@ -2,6 +2,7 @@ export interface hierarchy {
   name?: string;
   data?: hierarchy[];
   cityData?: any;
+  id?: number;
 }
 export interface group {
   type: string;
